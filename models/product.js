@@ -1,10 +1,6 @@
 const mongoose = require("../config/mongodb");
 
 const productSchema = mongoose.Schema({
-  code: {
-    type: String,
-    unique: true
-  },
   name: {
     type: String,
     required: [true, "This field is required."],
@@ -15,12 +11,17 @@ const productSchema = mongoose.Schema({
     type: Number,
     min: 0
   },
+  code: {
+    type: String,
+    unique: true
+  },
   description: String,
   quantity: Number,
   category: {
     type: mongoose.Schema.ObjectId,
     ref: "category"
-  }
+  },
+  starred: Boolean
 });
 
 productSchema.set('toJSON', {getters:true, setters:true, virtuals:true});
