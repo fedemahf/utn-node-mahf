@@ -9,6 +9,9 @@ module.exports = {
     loginFailed: "Wrong user or password",
     userCreated: "The user has been created"
   },
+  PRODUCTS: {
+    notFound: "Product not found"
+  },
   CATEGORIES: {
     alreadyExists: "This category already exists"
   }

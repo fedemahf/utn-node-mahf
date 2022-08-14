@@ -1,5 +1,6 @@
 const HttpStatus = require('http-status');
 const Product = require('../models/product');
+const errorMessage = require('../utils/errorMessage');
 
 module.exports = {
   getAll: async function (req, res, next) {
@@ -34,7 +35,12 @@ module.exports = {
   getById: async function (req, res, next) {
     try {
       const product = await Product.findById(req.params.id);
-      res.status(HttpStatus.OK).json(product);
+
+      if (product) {
+        res.status(HttpStatus.OK).json(product);
+      } else {
+        res.status(HttpStatus.BAD_REQUEST).json({ message: errorMessage.PRODUCTS.notFound });
+      }
     } catch (e) {
       console.log(e);
       res.status(HttpStatus.BAD_REQUEST).json({ message: e.message });
