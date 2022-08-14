@@ -1,0 +1,203 @@
+{
+  "info": {
+    "_postman_id": "54bc0317-4e17-4205-833d-68db32b4441b",
+    "name": "UTN Node Mahf",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Category All",
+      "id": "3adf229c-6ca9-4728-9b91-345cbe494aa9",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"phones\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/category"
+      },
+      "response": []
+    },
+    {
+      "name": "Category",
+      "id": "6bfaab9e-7e86-4c5c-98ad-47a1f92771c2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"phones\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/category"
+      },
+      "response": []
+    },
+    {
+      "name": "Category",
+      "id": "23dbb0a1-1f36-4440-9bae-0cda8a9c6d1d",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"iPhone XI\",\n    \"code\": \"01\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/category/62f9782d04761d2008cbddb0"
+      },
+      "response": []
+    },
+    {
+      "name": "Product All",
+      "id": "4ede7e0a-1ad3-4448-9a1d-a2abc840f6ec",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:3000/product"
+      },
+      "response": []
+    },
+    {
+      "name": "Product by ID",
+      "id": "574a192d-8aac-409d-92bc-8089372b5a59",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:3000/product/62f97a639f0a1a8aa7ab63fe"
+      },
+      "response": []
+    },
+    {
+      "name": "Product Starred",
+      "id": "57316007-1b79-4d60-b35e-ecfd04ae9f92",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:3000/product/starred"
+      },
+      "response": []
+    },
+    {
+      "name": "Product",
+      "id": "3093b4d4-663e-4fcf-8a0e-827d83c84e06",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"iPhone X\",\n    \"code\": \"01\",\n    \"price\": \"700\",\n    \"category\": \"62f97f70c1db9b268d3935a0\",\n    \"starred\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/product"
+      },
+      "response": []
+    },
+    {
+      "name": "Product",
+      "id": "0c3f818f-3dac-4654-93fe-370e8448bce9",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"iPhone XI\",\n    \"code\": \"01\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/product/62f9807014bcd939e7e77efa"
+      },
+      "response": []
+    },
+    {
+      "name": "User",
+      "id": "04e7cbd9-4e0d-4c39-9031-9df929095f32",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"user@mail.com\",\n    \"password\": \"Password123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/user"
+      },
+      "response": []
+    },
+    {
+      "name": "User Login",
+      "id": "e9b9e3f0-b265-4667-a62a-79a9d61b7290",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"user@mail.com\",\n    \"password\": \"Password123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:3000/user/login"
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmY5NjRkY2UwODY3NmZmMmQ1ZWMzNmIiLCJpYXQiOjE2NjA1MTUzMDgsImV4cCI6MTY2MDUxODkwOH0.QfW0HI41MMEzUiPhvzkSVz3Cdk4PdjE0gqd9GvHWcTc"
+    }
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "3517c0de-4e58-46cd-8716-083e28627021",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "3125483e-b84d-4ce6-874c-9aa9a32cc424",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
