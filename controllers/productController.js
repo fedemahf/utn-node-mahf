@@ -15,10 +15,20 @@ module.exports = {
         };
       }
 
-      const products = await Product.find(queryFind).select("code name").sort({ price: -1, name: 1 });
+      const products = await Product.find(queryFind).populate('category').select("code name price description category").sort({ price: -1, name: 1 });
       res.status(HttpStatus.OK).json(products);
     } catch (e) {
       console.log(e);
+      res.status(HttpStatus.BAD_REQUEST).json({ message: e.message });
+    }
+  },
+  getAllStarred: async function (req, res, next) {
+    try {
+      const products = await Product.find({ starred: true }).populate('category').select("code name price description category").sort({ price: -1, name: 1 });
+      res.status(HttpStatus.OK).json(products);
+    } catch (e) {
+      console.log(e);
+      res.status(HttpStatus.BAD_REQUEST).json({ message: e.message });
     }
   },
   getById: async function (req, res, next) {
@@ -27,7 +37,7 @@ module.exports = {
       res.status(HttpStatus.OK).json(product);
     } catch (e) {
       console.log(e);
-      res.status(HttpStatus.BAD_REQUEST).json(e);
+      res.status(HttpStatus.BAD_REQUEST).json({ message: e.message });
     }
   },
   create: async function (req, res, next) {
@@ -37,7 +47,7 @@ module.exports = {
       res.status(HttpStatus.CREATED).json(document);
     } catch (e) {
       console.log(e);
-      res.status(HttpStatus.BAD_REQUEST).json(e);
+      res.status(HttpStatus.BAD_REQUEST).json({ message: e.message });
     }
   },
   update: async function (req, res, next) {
@@ -46,7 +56,7 @@ module.exports = {
       res.status(HttpStatus.OK).json(document);
     } catch (e) {
       console.log(e);
-      res.status(HttpStatus.BAD_REQUEST).json(e);
+      res.status(HttpStatus.BAD_REQUEST).json({ message: e.message });
     }
   },
   delete: async function (req, res, next) {
@@ -55,7 +65,7 @@ module.exports = {
       res.status(HttpStatus.OK).json(document);
     } catch (e) {
       console.log(e);
-      res.status(HttpStatus.BAD_REQUEST).json(e);
+      res.status(HttpStatus.BAD_REQUEST).json({ message: e.message });
     }
   }
 }

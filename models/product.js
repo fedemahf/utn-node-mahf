@@ -10,16 +10,18 @@ const productSchema = mongoose.Schema({
   },
   price: {
     type: Number,
+    required: [true, errorMessage.GENERAL.required],
     min: 0
   },
   code: {
     type: String,
+    required: [true, errorMessage.GENERAL.required],
     unique: true
   },
   description: String,
-  quantity: Number,
   category: {
     type: mongoose.Schema.ObjectId,
+    required: [true, errorMessage.GENERAL.required],
     ref: "category"
   },
   starred: Boolean

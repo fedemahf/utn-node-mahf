@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+
 const productController = require('../controllers/productController');
 const authController = require('../controllers/authController');
 
 router.get('/', productController.getAll);
+router.get('/starred', productController.getAllStarred);
 router.post('/', authController.verifyToken, productController.create);
 router.get('/:id', productController.getById);
 router.put('/:id', authController.verifyToken, productController.update);
