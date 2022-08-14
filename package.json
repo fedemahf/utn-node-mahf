@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "archive": "mkdir -p dist && git archive --format zip --output=dist/archive.zip HEAD && zip -ur dist/archive.zip .git"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
