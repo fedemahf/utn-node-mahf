@@ -13,6 +13,7 @@ module.exports = {
     notFound: "Product not found"
   },
   CATEGORIES: {
-    alreadyExists: "This category already exists"
+    alreadyExists: "This category already exists",
+    notFound: "Category not found"
   }
 }

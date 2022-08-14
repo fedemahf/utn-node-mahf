@@ -1,5 +1,6 @@
 const HttpStatus = require('http-status');
 const Product = require('../models/product');
+const Category = require('../models/category');
 const errorMessage = require('../utils/errorMessage');
 
 module.exports = {
@@ -7,10 +8,10 @@ module.exports = {
     try {
       let queryFind = {};
 
-      if (req.query.buscar) {
+      if (req.query.find) {
         queryFind = {
           name: {
-            $regex: `.*${req.query.buscar}.*`,
+            $regex: `.*${req.query.find}.*`,
             $options: "i"
           }
         };
@@ -48,9 +49,15 @@ module.exports = {
   },
   create: async function (req, res, next) {
     try {
-      const product = new Product(req.body);
-      const document = await product.save();
-      res.status(HttpStatus.CREATED).json(document);
+      const category = await Category.findById(req.body.category);
+
+      if (!category) {
+        res.status(HttpStatus.BAD_REQUEST).json({ message: errorMessage.CATEGORIES.notFound });
+      } else {
+        const product = new Product(req.body);
+        const document = await product.save();
+        res.status(HttpStatus.CREATED).json(document);
+      }
     } catch (e) {
       console.log(e);
       res.status(HttpStatus.BAD_REQUEST).json({ message: e.message });
