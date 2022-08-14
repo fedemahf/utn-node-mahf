@@ -8,5 +8,8 @@ module.exports = {
     wrongPassword: "The field {PATH} should have at least one letter, one lower case and one upper case",
     loginFailed: "Wrong user or password",
     userCreated: "The user has been created"
+  },
+  CATEGORIES: {
+    alreadyExists: "This category already exists"
   }
 }

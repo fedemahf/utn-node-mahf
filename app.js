@@ -8,6 +8,7 @@ const HttpStatus = require('http-status');
 
 const productRouter = require('./routes/productRouter');
 const userRouter = require('./routes/userRouter');
+const categoryRouter = require('./routes/categoryRouter');
 const authController = require('./controllers/authController');
 
 var app = express();
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 authController.setSecretKey(app);
 app.use('/product', productRouter);
 app.use('/user', userRouter);
+app.use('/category', categoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
