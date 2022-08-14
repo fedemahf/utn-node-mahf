@@ -1,10 +1,11 @@
 const mongoose = require("../config/mongodb");
+const errorMessage = require('../utils/errorMessage');
 
 const productSchema = mongoose.Schema({
   name: {
     type: String,
-    required: [true, "This field is required."],
-    minLength: [3, "This field should have at least 3 characters."],
+    required: [true, errorMessage.GENERAL.required],
+    minLength: [3, errorMessage.GENERAL.min],
     uppercase: true
   },
   price: {

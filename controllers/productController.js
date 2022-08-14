@@ -1,6 +1,5 @@
 const HttpStatus = require('http-status');
-
-const Product = require("../models/product");
+const Product = require('../models/product');
 
 module.exports = {
   getAll: async function (req, res, next) {

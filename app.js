@@ -7,6 +7,8 @@ var logger = require('morgan');
 const HttpStatus = require('http-status');
 
 const productRouter = require('./routes/productRouter');
+const userRouter = require('./routes/userRouter');
+const authController = require('./controllers/authController');
 
 var app = express();
 
@@ -20,7 +22,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+authController.setSecretKey(app);
 app.use('/product', productRouter);
+app.use('/user', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -32,8 +36,7 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-  const statusCode = err.status || HttpStatus.INTERNAL_SERVER_ERROR;
-  res.status(statusCode).send({message: `Error ${statusCode}`});
+  res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR).send({ message: err?.message || 'Unknown error' });
 });
 
 module.exports = app;
